@@ -10,3 +10,50 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
+
+data=pd.read_csv("Housing_Data.csv")
+data
+
+print(data.columns)
+Index(['Manufacturer', 'Model', 'Sales in thousands', '4-year resale value',
+       'Vehicle type', 'Price in thousands', 'Engine size', 'Horsepower',
+       'Wheelbase', 'Width', 'Length', 'Curb weight', 'Fuel capacity',
+       'Fuel efficiency', 'Latest Launch'],
+      dtype='object')
+
+price = data['price']
+kurtosis_value = price.kurt()
+print("Kurtosis Value:", kurtosis_value)
+
+#       Validation
+if kurtosis_value > 0:
+    print("Leptokurtic Distribution")
+elif kurtosis_value < 0:
+    print("Platykurtic Distribution")
+else:
+    print("Mesokurtic Distribution")
+
+   Kurtosis Value: 1.9597399905771677
+Leptokurtic Distribution
+
+plt.figure(figsize=(8,5))
+plt.hist(price, bins=20)
+plt.title("House Price Distribution")
+plt.xlabel("Price")
+plt.ylabel("Frequency")
+plt.show()
+
+import matplotlib.pyplot as plt
+x=data["Sales in thousands"]
+plt.hist(x, color="blue", edgecolor="black")
+plt.title("Amount")
+plt.xlabel("data")
+plt.ylabel("list")
+plt.show()
+
+import matplotlib.pyplot as plt
+plt.scatter(data["price"], data["lotsize"])
+plt.xlabel("Price in thousands")
+plt.ylabel("Sales in thousands")
+plt.title("Price vs Sales")
+plt.show()
