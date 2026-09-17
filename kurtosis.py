@@ -57,3 +57,43 @@ plt.xlabel("Price in thousands")
 plt.ylabel("Sales in thousands")
 plt.title("Price vs Sales")
 plt.show()
+
+
+#kurtosis
+import numpy as np
+from scipy.stats import kurtosis as k
+profits=([100,120,150,200,4,1,2,5,3,2,6,5,4,3,3,1,2])
+kurto=k(profits,fisher=True)
+kurto1=k(profits,fisher=False)
+mean_value=np.mean(profits)
+max_value=max(profits)
+min_value=min(profits)
+if(kurto>0):
+    print("heavy tail more distribution")
+    if(max_value-mean_value)>(mean_value-min_value):
+        print("big profits")
+    else:
+        print("big loss")
+elif(kurto<0):
+    print("low tail less distribution and low profit/loss")
+else:
+    print("normal distribution and normal profit/loss")
+
+
+heavy tail more distribution
+big profits
+
+mean_val=np.mean(profits)
+median_val=np.median(profits)
+mean_val
+
+np.float64(35.94117647058823)
+
+plt.plot(profits, color="pink")
+plt.title("Profit or Loss Distribution")
+plt.xlabel("Profit Values")
+plt.ylabel("Frequency")
+plt.axhline(mean_val, linestyle="--", linewidth=3)
+plt.axhline(median_val, linestyle="dotted", linewidth=2)
+plt.show()
+
