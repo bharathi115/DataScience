@@ -60,3 +60,34 @@ plt.title("negative skew")
 plt.xlabel("Salary")
 plt.grid()
 plt.show()
+
+
+import numpy as np
+import pandas as pd
+
+data= pd.read_csv("/content/ sales_data.csv")
+data.head(50)
+
+data=data["Profit"]
+data
+
+from scipy.stats import skew
+ans=skew(data)
+if ans>0:
+    print("positive skew")
+elif ans<0:
+    print("negative skew")
+else:
+    print("normal skew")
+
+positive skew
+
+import matplotlib.pyplot as plt
+plt.figure(figsize=(8,5))
+plt.hist(data, color='skyblue', bins=10)
+plt.title("Profit Distribution")
+plt.xlabel("Profit")
+plt.ylabel("Frequency")
+plt.grid(True)
+plt.show()
+
